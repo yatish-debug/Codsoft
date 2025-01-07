@@ -5,14 +5,13 @@
 
 using namespace std;
 
-// Function to get a valid input from the user
 int getValidInput() {
     int input;
     while (true) {
         cin >> input;
         if (cin.fail()) {
-            cin.clear(); // Clear error flag
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore invalid input
+            cin.clear(); 
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
             cout << "Invalid input. Please enter a number: ";
         } else {
             return input;
@@ -20,9 +19,8 @@ int getValidInput() {
     }
 }
 
-// Function to start the number guessing game
 void startGame(int lower, int upper) {
-    int randomNumber = rand() % (upper - lower + 1) + lower; // Generate a random number
+    int randomNumber = rand() % (upper - lower + 1) + lower; 
     int guess, numberOfGuesses = 0;
     int hintCounter = 0;
 
@@ -33,8 +31,7 @@ void startGame(int lower, int upper) {
         guess = getValidInput(); // Get a valid guess from the user
         numberOfGuesses++;
 
-        // Provide hints if the number of guesses exceeds a certain threshold
-        if (numberOfGuesses > 5 && hintCounter == 0) {
+                if (numberOfGuesses > 5 && hintCounter == 0) {
             if (randomNumber % 2 == 0)
                 cout << "Hint: The number is even." << endl;
             else
@@ -52,7 +49,6 @@ void startGame(int lower, int upper) {
     } while (guess != randomNumber);
 }
 
-// Function to display the menu and let the user choose difficulty
 void displayMenu() {
     cout << "\nWelcome to the Number Guessing Game!" << endl;
     cout << "Please choose a difficulty level:" << endl;
@@ -64,14 +60,14 @@ void displayMenu() {
 }
 
 int main() {
-    srand(time(0)); // Seed the random number generator with the current time
+    srand(time(0));
 
     int choice, lower, upper;
     bool playAgain = true;
 
     while (playAgain) {
         displayMenu();
-        choice = getValidInput(); // Get valid menu choice
+        choice = getValidInput();
 
         switch (choice) {
             case 1:
